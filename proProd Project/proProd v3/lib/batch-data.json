@@ -1,0 +1,56 @@
+{
+  "batches": [
+    {
+      "vch": "Vch 255",
+      "name": "TOTAL CARE PLUS FC LEMON 1 LTR - 25",
+      "date": "2026-04-23",
+      "materials": [
+        { "name": "D.M. WATER", "qty": 24, "unit": "LTR" },
+        { "name": "2L", "qty": 0.750, "unit": "KGS" },
+        { "name": "LEMON SPLASH (SENT)", "qty": 0.375, "unit": "KGS" },
+        { "name": "13L", "qty": 0.750, "unit": "KGS" },
+        { "name": "1 LIT PHENYLE BOTTLE", "qty": 25.00, "unit": "PCS" },
+        { "name": "STICKERS TOTAL CARE PLUS FC LEMON 1 LTR", "qty": 25.00, "unit": "PCS" },
+        { "name": "WHITE CAP (PCO)", "qty": 25.00, "unit": "PCS" },
+        { "name": "BOX FOR 12 NOS", "qty": 2.00, "unit": "PCS" }
+      ]
+    },
+    {
+      "vch": "Vch 256",
+      "name": "TOTAL CARE PLUS FC MOGRA 1 LTR - 25",
+      "date": "2026-04-23",
+      "materials": [
+        { "name": "STICKERS T.C. PLUS FC MOGRA 1 LTR", "qty": 25.00, "unit": "PCS" },
+        { "name": "D.M. WATER", "qty": 24, "unit": "LTR" },
+        { "name": "2L", "qty": 0.750, "unit": "KGS" },
+        { "name": "MADURAI JASMIN COV", "qty": 0.250, "unit": "KGS" },
+        { "name": "13L", "qty": 0.750, "unit": "KGS" },
+        { "name": "16L", "qty": 0.100, "unit": "KGS" },
+        { "name": "1 LIT PHENYLE BOTTLE", "qty": 25.00, "unit": "PCS" },
+        { "name": "WHITE CAP (PCO)", "qty": 25.00, "unit": "PCS" },
+        { "name": "BOX FOR 12 NOS", "qty": 2.00, "unit": "PCS" }
+      ]
+    },
+    {
+      "vch": "Vch 257",
+      "name": "B5 LOOSE DETERGENT - 400",
+      "date": "2026-04-23",
+      "materials": [
+        { "name": "SODA", "qty": 90.000, "unit": "KGS" },
+        { "name": "5L", "qty": 12.000, "unit": "KGS" },
+        { "name": "1 NO", "qty": 30.000, "unit": "KGS" },
+        { "name": "CBX", "qty": 0.100, "unit": "KGS" },
+        { "name": "SALT", "qty": 210.000, "unit": "KGS" },
+        { "name": "26 No Sent (OXYBLUE)", "qty": 0.800, "unit": "KGS" },
+        { "name": "GREEN SPECKLES", "qty": 3.000, "unit": "KGS" },
+        { "name": "NILA SEV", "qty": 2.000, "unit": "KGS" },
+        { "name": "BLUE SPECKLES", "qty": 2.000, "unit": "KGS" },
+        { "name": "ORANGE SPECKLES", "qty": 3.000, "unit": "KGS" },
+        { "name": "BARIK POWDER", "qty": 8.000, "unit": "KGS" },
+        { "name": "BAG 25 KG PACKING", "qty": 16.00, "unit": "PCS" },
+        { "name": "SS (SODIUM SULPHATE)", "qty": 20.000, "unit": "KGS" },
+        { "name": "7L", "qty": 4.000, "unit": "KGS" }
+      ]
+    }
+  ]
+}
