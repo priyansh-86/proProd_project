@@ -6,8 +6,9 @@ import { createClient } from '@/lib/supabase/client'
 import { 
   BarChart3, Boxes, Package, Factory, Truck, FileText, 
   Home, Upload, Download, Calendar, AlertTriangle, 
-  TrendingUp, RefreshCw 
+  TrendingUp, RefreshCw, Settings, User, LogOut
 } from 'lucide-react'
+import { useRouter } from 'next/navigation'
 import { ThemeToggle } from '@/components/theme-toggle'
 import { format } from 'date-fns'
 
@@ -20,6 +21,7 @@ const navItems = [
   { href: '/reports', label: 'Reports', icon: FileText },
   { href: '/export', label: 'Export Sheet', icon: Download },
   { href: '/import', label: 'Import Data', icon: Upload },
+  { href: '/settings', label: 'Settings', icon: Settings },
 ]
 
 interface Stats {
@@ -44,6 +46,9 @@ interface LastEntry {
 }
 
 export default function Dashboard() {
+  const router = useRouter()
+  const [user, setUser] = useState<any>(null)
+  const [showUserMenu, setShowUserMenu] = useState(false)
   const [stats, setStats] = useState<Stats>({
     totalRawMaterials: 0,
     totalProducts: 0,
@@ -78,8 +83,22 @@ export default function Dashboard() {
   useEffect(() => {
     if (mounted) {
       loadStats()
+      loadUser()
     }
   }, [mounted])
+
+  async function loadUser() {
+    const supabase = createClient()
+    const { data: { user } } = await supabase.auth.getUser()
+    setUser(user)
+  }
+
+  async function handleLogout() {
+    const supabase = createClient()
+    await supabase.auth.signOut()
+    router.push('/auth/login')
+    router.refresh()
+  }
 
   async function loadStats() {
     try {
@@ -230,6 +249,47 @@ export default function Dashboard() {
                   <RefreshCw className={`w-5 h-5 ${loading ? 'animate-spin' : ''}`} />
                 </button>
                 <ThemeToggle />
+                
+                {/* User Menu */}
+                <div className="relative">
+                  <button
+                    onClick={() => setShowUserMenu(!showUserMenu)}
+                    className="flex items-center gap-2 p-2 rounded-lg hover:bg-muted transition-colors"
+                  >
+                    <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
+                      <User className="w-4 h-4 text-primary" />
+                    </div>
+                  </button>
+                  
+                  {showUserMenu && (
+                    <div className="absolute right-0 top-full mt-2 w-64 glass-card p-2 shadow-lg z-50">
+                      {user && (
+                        <div className="px-3 py-2 border-b border-border mb-2">
+                          <p className="text-sm font-medium text-foreground truncate">{user.email}</p>
+                          <p className="text-xs text-muted-foreground">Logged in</p>
+                        </div>
+                      )}
+                      <Link
+                        href="/settings"
+                        className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-foreground hover:bg-muted transition-colors"
+                        onClick={() => setShowUserMenu(false)}
+                      >
+                        <Settings className="w-4 h-4" />
+                        Settings
+                      </Link>
+                      <button
+                        onClick={() => {
+                          setShowUserMenu(false)
+                          handleLogout()
+                        }}
+                        className="w-full flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-destructive hover:bg-destructive/10 transition-colors"
+                      >
+                        <LogOut className="w-4 h-4" />
+                        Sign Out
+                      </button>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
 

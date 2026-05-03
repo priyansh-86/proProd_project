@@ -217,7 +217,12 @@ export default function ProductionSheet() {
 }
 
 function ProductionBatchSheet({ batch }: any) {
+  const [mounted, setMounted] = useState(false)
   const dateStr = batch.date || new Date().toISOString().split('T')[0]
+  
+  useEffect(() => {
+    setMounted(true)
+  }, [])
   
   return (
     <div className="print:text-black print:bg-white">
@@ -229,7 +234,7 @@ function ProductionBatchSheet({ batch }: any) {
           </div>
           <div className="text-right">
             <p className="text-sm"><strong>Date:</strong> {dateStr}</p>
-            <p className="text-sm"><strong>Generated:</strong> {format(new Date(), 'dd MMM yyyy HH:mm')}</p>
+            <p className="text-sm"><strong>Generated:</strong> {mounted ? format(new Date(), 'dd MMM yyyy HH:mm') : '...'}</p>
           </div>
         </div>
       </div>
@@ -282,14 +287,20 @@ function ProductionBatchSheet({ batch }: any) {
 }
 
 function ProductionDaySheet({ date }: any) {
+  const [mounted, setMounted] = useState(false)
+  
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+  
   return (
     <div className="print:text-black print:bg-white">
       <div className="border-b-2 border-black pb-3 mb-4">
         <h1 className="text-2xl font-bold">Daily Production Report</h1>
         <p className="text-sm text-gray-600">DARKDESIRE Production Management System</p>
         <div className="flex justify-between items-end mt-2">
-          <p className="text-sm"><strong>Date:</strong> {format(parseISO(date), 'EEEE, dd MMMM yyyy')}</p>
-          <p className="text-sm"><strong>Generated:</strong> {format(new Date(), 'dd MMM yyyy HH:mm')}</p>
+          <p className="text-sm"><strong>Date:</strong> {mounted ? format(parseISO(date), 'EEEE, dd MMMM yyyy') : date}</p>
+          <p className="text-sm"><strong>Generated:</strong> {mounted ? format(new Date(), 'dd MMM yyyy HH:mm') : '...'}</p>
         </div>
       </div>
 

@@ -93,9 +93,9 @@ export default function Dispatch() {
   const getBatchCode = (batchId: string) => batches.find((b) => b.id === batchId)?.batch_code || '-'
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-cyan-50">
-      <div className="p-4 border-b border-gray-200 bg-white/80 backdrop-blur">
-        <Link href="/" className="flex items-center gap-2 text-blue-600 hover:text-blue-700">
+    <div className="min-h-screen bg-background">
+      <div className="p-4 border-b border-border bg-card/80 backdrop-blur">
+        <Link href="/" className="flex items-center gap-2 text-primary hover:text-primary/80">
           <Home className="w-4 h-4" /> Back to Dashboard
         </Link>
       </div>
@@ -104,26 +104,26 @@ export default function Dispatch() {
         <div className="max-w-6xl mx-auto">
           <div className="flex justify-between items-center mb-8">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900">Dispatch Records</h2>
-              <p className="text-gray-600 mt-2">Log customer shipments and track dispatch history</p>
+              <h2 className="text-3xl font-bold text-foreground">Dispatch Records</h2>
+              <p className="text-muted-foreground mt-2">Log customer shipments and track dispatch history</p>
             </div>
             <button
               onClick={() => setShowForm(!showForm)}
-              className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+              className="flex items-center gap-2 bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90"
             >
               <Plus className="w-4 h-4" /> Add Dispatch
             </button>
           </div>
 
           {showForm && (
-            <form onSubmit={handleSubmit} className="bg-white/80 backdrop-blur rounded-lg border border-gray-200 p-6 mb-6">
+            <form onSubmit={handleSubmit} className="glass-card p-6 mb-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-900 mb-1">Product</label>
+                  <label className="block text-sm font-medium text-foreground mb-1">Product</label>
                   <select
                     value={formData.product_id}
                     onChange={(e) => setFormData({ ...formData, product_id: e.target.value })}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                    className="w-full px-4 py-2 border border-border rounded-lg bg-background text-foreground"
                     required
                   >
                     <option value="">Select Product</option>
@@ -135,11 +135,11 @@ export default function Dispatch() {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-900 mb-1">Batch</label>
+                  <label className="block text-sm font-medium text-foreground mb-1">Batch</label>
                   <select
                     value={formData.batch_id}
                     onChange={(e) => setFormData({ ...formData, batch_id: e.target.value })}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                    className="w-full px-4 py-2 border border-border rounded-lg bg-background text-foreground"
                     required
                   >
                     <option value="">Select Batch</option>
@@ -151,56 +151,56 @@ export default function Dispatch() {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-900 mb-1">Customer Name</label>
+                  <label className="block text-sm font-medium text-foreground mb-1">Customer Name</label>
                   <input
                     type="text"
                     value={formData.customer_name}
                     onChange={(e) => setFormData({ ...formData, customer_name: e.target.value })}
                     placeholder="Customer / Distributor"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                    className="w-full px-4 py-2 border border-border rounded-lg bg-background text-foreground"
                     required
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-900 mb-1">Quantity</label>
+                  <label className="block text-sm font-medium text-foreground mb-1">Quantity</label>
                   <input
                     type="number"
                     value={formData.quantity_dispatched}
                     onChange={(e) => setFormData({ ...formData, quantity_dispatched: e.target.value })}
                     step="0.01"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                    className="w-full px-4 py-2 border border-border rounded-lg bg-background text-foreground"
                     required
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-900 mb-1">Dispatch Date</label>
+                  <label className="block text-sm font-medium text-foreground mb-1">Dispatch Date</label>
                   <input
                     type="date"
                     value={formData.dispatch_date}
                     onChange={(e) => setFormData({ ...formData, dispatch_date: e.target.value })}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                    className="w-full px-4 py-2 border border-border rounded-lg bg-background text-foreground"
                     required
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-900 mb-1">Notes</label>
+                  <label className="block text-sm font-medium text-foreground mb-1">Notes</label>
                   <input
                     type="text"
                     value={formData.notes}
                     onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
                     placeholder="Optional notes"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+                    className="w-full px-4 py-2 border border-border rounded-lg bg-background text-foreground"
                   />
                 </div>
               </div>
               <div className="flex gap-4">
-                <button type="submit" className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700">
+                <button type="submit" className="bg-primary text-primary-foreground px-6 py-2 rounded-lg hover:bg-primary/90">
                   Add Dispatch
                 </button>
                 <button
                   type="button"
                   onClick={() => setShowForm(false)}
-                  className="bg-gray-300 text-gray-900 px-6 py-2 rounded-lg"
+                  className="bg-muted text-foreground px-6 py-2 rounded-lg hover:bg-muted/80"
                 >
                   Cancel
                 </button>
@@ -210,37 +210,37 @@ export default function Dispatch() {
 
           {loading ? (
             <div className="text-center py-12">
-              <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+              <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
             </div>
           ) : records.length === 0 ? (
-            <div className="bg-white/80 backdrop-blur rounded-lg p-8 text-center text-gray-600">
-              No dispatch records yet. Click "Add Dispatch" to start.
+            <div className="glass-card p-8 text-center text-muted-foreground">
+              No dispatch records yet. Click &quot;Add Dispatch&quot; to start.
             </div>
           ) : (
-            <div className="bg-white/80 backdrop-blur rounded-lg border border-gray-200 overflow-hidden">
+            <div className="glass-card overflow-hidden">
               <table className="w-full">
-                <thead className="bg-gray-50 border-b border-gray-200">
+                <thead className="bg-muted/50 border-b border-border">
                   <tr>
-                    <th className="px-6 py-3 text-left text-sm font-semibold text-gray-900">Date</th>
-                    <th className="px-6 py-3 text-left text-sm font-semibold text-gray-900">Product</th>
-                    <th className="px-6 py-3 text-left text-sm font-semibold text-gray-900">Batch</th>
-                    <th className="px-6 py-3 text-left text-sm font-semibold text-gray-900">Customer</th>
-                    <th className="px-6 py-3 text-left text-sm font-semibold text-gray-900">Qty</th>
-                    <th className="px-6 py-3 text-left text-sm font-semibold text-gray-900">Notes</th>
-                    <th className="px-6 py-3 text-left text-sm font-semibold text-gray-900">Action</th>
+                    <th className="px-6 py-3 text-left text-sm font-semibold text-foreground">Date</th>
+                    <th className="px-6 py-3 text-left text-sm font-semibold text-foreground">Product</th>
+                    <th className="px-6 py-3 text-left text-sm font-semibold text-foreground">Batch</th>
+                    <th className="px-6 py-3 text-left text-sm font-semibold text-foreground">Customer</th>
+                    <th className="px-6 py-3 text-left text-sm font-semibold text-foreground">Qty</th>
+                    <th className="px-6 py-3 text-left text-sm font-semibold text-foreground">Notes</th>
+                    <th className="px-6 py-3 text-left text-sm font-semibold text-foreground">Action</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-gray-200">
+                <tbody className="divide-y divide-border">
                   {records.map((rec) => (
-                    <tr key={rec.id} className="hover:bg-gray-50">
-                      <td className="px-6 py-4 text-sm text-gray-600">{rec.dispatch_date}</td>
-                      <td className="px-6 py-4 font-medium text-gray-900">{getProductName(rec.product_id)}</td>
-                      <td className="px-6 py-4 text-sm text-gray-600">{getBatchCode(rec.batch_id)}</td>
-                      <td className="px-6 py-4 text-sm text-gray-600">{rec.customer_name}</td>
-                      <td className="px-6 py-4 text-sm text-gray-600">{rec.quantity_dispatched.toFixed(2)}</td>
-                      <td className="px-6 py-4 text-sm text-gray-600">{rec.notes || '-'}</td>
+                    <tr key={rec.id} className="hover:bg-muted/50">
+                      <td className="px-6 py-4 text-sm text-muted-foreground">{rec.dispatch_date}</td>
+                      <td className="px-6 py-4 font-medium text-foreground">{getProductName(rec.product_id)}</td>
+                      <td className="px-6 py-4 text-sm text-muted-foreground">{getBatchCode(rec.batch_id)}</td>
+                      <td className="px-6 py-4 text-sm text-muted-foreground">{rec.customer_name}</td>
+                      <td className="px-6 py-4 text-sm text-muted-foreground">{rec.quantity_dispatched.toFixed(2)}</td>
+                      <td className="px-6 py-4 text-sm text-muted-foreground">{rec.notes || '-'}</td>
                       <td className="px-6 py-4 text-sm">
-                        <button onClick={() => handleDelete(rec.id)} className="text-red-600 hover:text-red-700">
+                        <button onClick={() => handleDelete(rec.id)} className="text-destructive hover:text-destructive/80">
                           <Trash2 className="w-4 h-4" />
                         </button>
                       </td>
